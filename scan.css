@@ -1,0 +1,27 @@
+.h1 {
+    text-align: center;
+}
+
+.scan_page {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.scan_title {
+    width: 90vw;
+    text-align: center;
+}
+
+model-viewer {
+    width: 90vw;
+    height: 75vh;
+    border: 3px solid gray;
+}
+
+.scan_footer {
+    width: 90vw;
+    padding-top: 16px;
+    text-align: center;
+    font-size: 20px;
+}
