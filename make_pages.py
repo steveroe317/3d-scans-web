@@ -100,7 +100,6 @@ def generate_index_html_files(model_paths: list[str]) -> None:
         scan_list += scan_list_item_template.substitute(
             SCAN_HTML=model_html, SCAN_PNG=model_png, SCAN_TITLE=model_title
         )
-        scan_list += "\n"
 
     # Apply substitutions to the template to get the index html file.
     index_template_file = open(INDEX_TEMPLATE_PATH)

@@ -1,3 +1,3 @@
-<div class="imagebox">
-    <a href="${SCAN_HTML}"><img src="${SCAN_PNG}" alt="${SCAN_TITLE}"></a>
-</div>
+        <div class="imagebox">
+            <a href="${SCAN_HTML}"><img src="${SCAN_PNG}" alt="${SCAN_TITLE}"></a>
+        </div>
