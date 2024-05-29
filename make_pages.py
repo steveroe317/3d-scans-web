@@ -8,7 +8,7 @@ from collections import defaultdict
 from string import Template
 
 
-INDEX_HTML_PATH = "index.html"
+INDEX_HTML = "index.html"
 TEMPLATE_DIR = "templates"
 INDEX_TEMPLATE_PATH = os.path.join(TEMPLATE_DIR, "index.template")
 SCAN_TEMPLATE_PATH = os.path.join(TEMPLATE_DIR, "scan.template")
@@ -62,12 +62,20 @@ def generate_model_html_files(model_paths: list[str]) -> None:
         # Get the model title and .glb filename from the model name.
         model_title = " ".join(model_name.split("-")).title()
         model_glb = model_name + GLB_EXT
+        model_depth = len(os.path.split(model_path)) - 1
+        if model_depth > 0:
+            index_html_path = ".."
+            for _ in range(model_depth):
+                os.path.join(index_html_path, "..")
+            index_html_path = os.path.join(index_html_path, INDEX_HTML)
+        else:
+            index_html_path = INDEX_HTML
 
         # Apply subsitutions to the template to get the model html file.
         model_html_path = model_path + HTML_EXT
         model_html_file = open(model_html_path, "w")
         model_html_contents = scan_template.substitute(
-            SCAN_TITLE=model_title, SCAN_GLB=model_glb
+            SCAN_TITLE=model_title, SCAN_GLB=model_glb, INDEX_HTML_PATH=index_html_path
         )
         model_html_file.write(model_html_contents)
         model_html_file.close()
@@ -98,7 +106,7 @@ def generate_index_html_files(model_paths: list[str]) -> None:
     index_template_file = open(INDEX_TEMPLATE_PATH)
     index_template = Template(index_template_file.read())
     index_html_contents = index_template.substitute(SCAN_LIST=scan_list)
-    index_html_file = open(INDEX_HTML_PATH, "w")
+    index_html_file = open(INDEX_HTML, "w")
     index_html_file.write(index_html_contents)
     index_html_file.close()
 

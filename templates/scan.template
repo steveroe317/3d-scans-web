@@ -22,7 +22,7 @@
         <model-viewer alt="${SCAN_TITLE}" src="${SCAN_GLB}" camera-controls></model-viewer>
 
         <div class="scan_footer">
-            <a href="../gallery.html">back to scans</a>
+            <a href="${INDEX_HTML_PATH}">back to scans</a>
         </div>
     </div>
 </body>
