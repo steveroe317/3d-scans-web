@@ -17,7 +17,7 @@ def copy_file(source_dir: str, target_dir: str, filename: str):
     shutil.copy(os.path.join(source_dir, filename), os.path.join(target_dir, filename))
 
 
-def copy_models(base_dir: str, model_paths: str):
+def copy_models(base_dir: str, model_paths: list[str]):
 
     for model in model_paths:
         target_dir, name = os.path.split(model)
