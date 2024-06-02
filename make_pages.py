@@ -3,12 +3,14 @@
 
 import os
 import os.path
+import shutil
 
 from collections import defaultdict
 from string import Template
 
 
 INDEX_HTML = "index.html"
+GALLERY_HTML = "gallery.html"
 TEMPLATE_DIR = "templates"
 INDEX_TEMPLATE_PATH = os.path.join(TEMPLATE_DIR, "index.template")
 SCAN_TEMPLATE_PATH = os.path.join(TEMPLATE_DIR, "scan.template")
@@ -125,8 +127,12 @@ def main():
     # GLB or PNGs are errors.
     model_paths = find_models(os.curdir)
 
+    # Generate the model viewing and index web pages.
     generate_model_html_files(model_paths)
     generate_index_html_files(model_paths)
+
+    # Create a gallery web page for backwards compatibility.
+    shutil.copy(INDEX_HTML, GALLERY_HTML)
 
 
 if __name__ == "__main__":
